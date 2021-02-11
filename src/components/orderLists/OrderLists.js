@@ -22,7 +22,7 @@ export const OrderLists = () => {
     }, [])
 
     return (
-        <div>
+        <div className="container">
             <h1 className="text-center">Order Lists</h1>
             <table className="table table-bordered">
                 <thead>

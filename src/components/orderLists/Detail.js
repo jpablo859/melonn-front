@@ -14,7 +14,6 @@ export const Detail = () => {
         (async () => {
             try {
                 const response = await axios.get(`http://localhost:4000/api/melonn/detail/${id}`);
-                console.log(response)
                 setOrder(response.data.data);
             } catch (err) {
                 //console.log(err)

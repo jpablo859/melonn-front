@@ -1,94 +1,40 @@
+import { useState } from 'react';
+import { ItemDetail } from '../orderLists/ItemDetail';
 import { InfoOrder } from './InfoOrder';
+import { ItemsOrder } from './ItemsOrder';
+import { ShippingOrder } from './ShippingOrder';
 
 export const NewOrder = () => {
 
-    
+    const [listItems, setListItems] = useState([]);
+
+    const addItem = data => {
+        setListItems([
+            ...listItems,
+            data
+        ])
+    }
 
     return (
-        <div className="container-fluid">
+        <div className="container">
             <h1 className="text-center">New Order</h1>
             <InfoOrder/>
-                
-            <table className="table">
-                <thead>
-                    <tr>
-                        <th>Shipping Adress</th>
-                        <th>Shipping City</th>
-                        <th>Shipping Region</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <input
-                                className="form-control"
-                                name="orderNum"
-                                
-                            />
-                        </td>
-                        <td>
-                            <input
-                                className="form-control"
-                                name="buyerName"
-                                
-                            />
-                        </td>
-                        <td>
-                            <input
-                                className="form-control"
-                                name="buyerPhone"
-                                
-                            />
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            {/* <table className="table">
-                <thead>
-                    <tr>Items</tr>
-                    <tr>
-                        <th>Product Name</th>
-                        <th>Quantity</th>
-                        <th>Weright</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <input
-                                className="form-control"
-                                name="orderNum"
-                                value={orderNum}
-                                
-                            />
-                        </td>
-                        <td>
-                            <input
-                                className="form-control"
-                                name="buyerName"
-                                value={buyerName}
-                                
-                            />
-                        </td>
-                        <td>
-                            <input
-                                className="form-control"
-                                name="buyerPhone"
-                                value={buyerPhone}
-                                
-                            />
-                        </td>
-                        <td>
-                            <input
-                                className="form-control"
-                                name="buyerEmail"
-                                value={buyerEmail}
-                                
-                            />
-                        </td>
-                    </tr>
-                </tbody>
-            </table> */}
+            <ShippingOrder/>
+            <ItemsOrder addItem={addItem}/>
+            {listItems.length > 0 && 
+                <table className="table table-bordered table-sm table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Quantity</th>
+                            <th>Weight</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {listItems.map(item => <ItemDetail key={item.name} productName={item.name} {...item}/>)}
+                    </tbody>
+                </table>
+            }
         </div>
     )
 }
