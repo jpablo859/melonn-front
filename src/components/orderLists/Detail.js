@@ -43,7 +43,7 @@ export const Detail = () => {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>{order.externalOrderNum}</td>
+                                    <td>{order.orderNum}</td>
                                     <td>{order.buyerName}</td>
                                     <td>{order.buyerPhone}</td>
                                     <td>{order.buyerEmail}</td>
@@ -64,10 +64,10 @@ export const Detail = () => {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>{order.shippingAdress}</td>
-                                    <td>{order.shippingCity}</td>
-                                    <td>{order.shippingRegion}</td>
-                                    <td>{order.shippingCountry}</td>
+                                    <td>{order.adress}</td>
+                                    <td>{order.city}</td>
+                                    <td>{order.region}</td>
+                                    <td>{order.country}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -86,7 +86,7 @@ export const Detail = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {order.items.map(item => <ItemDetail key={item.productName} {...item}/>)}
+                                {order.items.map(item => <ItemDetail key={item.name} {...item}/>)}
                             </tbody>
                         </table>
                     </>

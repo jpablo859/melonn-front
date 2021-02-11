@@ -16,7 +16,7 @@ export const OrderLists = () => {
                     setList(response.data.data);
                 }
             } catch(err) {
-                console.log(err.getMessage())
+                console.log(err)
             }
         })()
     }, [])

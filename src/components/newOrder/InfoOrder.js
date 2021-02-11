@@ -1,20 +1,11 @@
 import  React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
-export const InfoOrder = () => {
+export const InfoOrder = ({orderNum, buyerName, buyerPhone, buyerEmail, seller, handleChange, optionChange}) => {
 
     const API_KEY = '8hu71URNzm7FCLV9LfDPd9Gz61zN2diV6kG2hDEw';
 
     const [shpMethod, setShpMethod] = useState();
-
-    const [state, setState] = useState({
-        seller: '',
-        shippingMethod: '',
-        orderNum: '',
-        buyerName: '',
-        buyerPhone: '',
-        buyerEmail: ''
-    });
 
     useEffect(() => {
         (async () => {
@@ -30,15 +21,6 @@ export const InfoOrder = () => {
             }
         })()
     }, [])
-    
-    const {orderNum, buyerName, buyerPhone, buyerEmail, seller, shippingMethod} = state;
-
-    const fnChange = e => {
-        setState({
-            ...state,
-            [e.target.name]: e.target.value
-        })
-    }
 
     return (
         <table className="table table-bordered table-sm">
@@ -57,17 +39,17 @@ export const InfoOrder = () => {
                             className="form-control"
                             name="seller"
                             value={seller}
-                            onChange={fnChange}
+                            onChange={handleChange}
                         />
                     </td>
                     <td>
                         <select 
                             className="form-control"
-                            onChange={fnChange}
+                            onChange={optionChange}
                             name="shippingMethod"
                         >
                             <option key={0}></option>
-                            {shpMethod && shpMethod.map(({id, name}) => <option key={id}>{name}</option>)}
+                            {shpMethod && shpMethod.map(({id, name}) => <option key={id} value={id}>{name}</option>)}
                         </select>
                     </td>
                     <td>
@@ -75,7 +57,7 @@ export const InfoOrder = () => {
                             className="form-control"
                             name="orderNum"
                             value={orderNum}
-                            onChange={fnChange}
+                            onChange={handleChange}
                         />
                     </td>
                 </tr>
@@ -94,7 +76,7 @@ export const InfoOrder = () => {
                             className="form-control"
                             name="buyerName"
                             value={buyerName}
-                            onChange={fnChange}
+                            onChange={handleChange}
                         />
                     </td>
                     <td>
@@ -102,7 +84,7 @@ export const InfoOrder = () => {
                             className="form-control"
                             name="buyerPhone"
                             value={buyerPhone}
-                            onChange={fnChange}
+                            onChange={handleChange}
                         />
                     </td>
                     <td>
@@ -110,7 +92,7 @@ export const InfoOrder = () => {
                             className="form-control"
                             name="buyerEmail"
                             value={buyerEmail}
-                            onChange={fnChange}
+                            onChange={handleChange}
                         />
                     </td>
                 </tr>

@@ -1,21 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-export const ShippingOrder = () => {
-
-    const [shipping, setShipping] = useState({
-        adress: '',
-        city: '',
-        region: ''
-    });
-
-    const handleChange = e => {
-        setShipping({
-            ...shipping,
-            [e.target.name]: e.target.value
-        })
-    }
-
-    const {adress, city, region} = shipping;
+export const ShippingOrder = ({adress, city, region, country,handleChange}) => {
 
     return (
         <table className="table table-bordered table-sm">
@@ -24,6 +9,7 @@ export const ShippingOrder = () => {
                     <th>Shipping Adress</th>
                     <th>Shipping City</th>
                     <th>Shipping Region</th>
+                    <th>Shipping Country</th>
                 </tr>
             </thead>
             <tbody>
@@ -49,6 +35,14 @@ export const ShippingOrder = () => {
                             className="form-control"
                             name="region"
                             value={region}
+                            onChange={handleChange}
+                        />
+                    </td>
+                    <td>
+                        <input
+                            className="form-control"
+                            name="country"
+                            value={country}
                             onChange={handleChange}
                         />
                     </td>
