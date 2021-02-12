@@ -4,6 +4,7 @@ import { InfoOrder } from './InfoOrder';
 import { ItemsOrder } from './ItemsOrder';
 import { ShippingOrder } from './ShippingOrder';
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 
 export const NewOrder = () => {
 
@@ -102,6 +103,10 @@ export const NewOrder = () => {
             const {data:response} = await axios.post('http://localhost:4000/api/melonn/saveSale', data);
     
             alert(response.data.message);
+
+            if(response.ok) {
+                return <Redirect to="/orderLists" />
+            }
 
         } catch (err) {
             alert(err);

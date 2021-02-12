@@ -30,6 +30,7 @@ export const OrderLists = () => {
                         <th>Order Number</th>
                         <th>Seller Store</th>
                         <th>Creation Date</th>
+                        <th>Promise Date</th>
                         <th>Shipping Method</th>
                         <th>Detail</th>
                     </tr>
